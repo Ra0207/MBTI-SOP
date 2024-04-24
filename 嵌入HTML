@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分析报告生成器</title>
+    <style>
+        /* 在这里添加CSS样式 */
+    </style>
+</head>
+<body>
+    <h1>分析报告生成器</h1>
+    <form id="infoForm">
+        <label for="infoInput">请输入信息：</label>
+        <input type="text" id="infoInput" name="infoInput">
+        <button type="submit">生成报告</button>
+    </form>
+    <div id="report"></div>
+    <script>
+        // 在这里添加JavaScript代码
+        document.getElementById('infoForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // 阻止表单默认提交行为
+        var infoInput = document.getElementById('infoInput').value;
+        var report = generateReport(infoInput); // 调用你的代码生成分析报告
+        document.getElementById('report').innerHTML = report; // 将分析报告显示在页面上
+        });
+
+function generateReport(info) {
+    // 在这里编写你的代码，根据输入的信息生成分析报告
+    #!/usr/bin/env python
+# coding: utf-8
+name=int(input())
+class MBTICareerMatcher:
+    def __init__(self):
+        # 初始化代码
+        pass
+
+    def match(self, mbti_type):
+        # 匹配逻辑
+        pass
+
+mbti_career_matcher = MBTICareerMatcher()
+
+class MBTICareerMatch:
+    def __init__(self):
+        # 在这里实现MBTICareerMatch类的功能
+        pass
+        mbti_career_matcher = MBTICareerMatch()
+
+
+# In[6]:
+
+
+class CustomerProfile:
+    def __init__(self, name, mbti, major, grades, hobbies):
+        self.name = name  
+        self.mbti = mbti  
+        self.major = major  
+        self.grades = grades  
+        self.hobbies = hobbies  
+        self.profile_info = []  
+
+    def add_profile_info(self):
+        self.profile_info.append({
+            'Name': self.name,
+            'MBTI': self.mbti,
+            'Major': self.major,
+            'Grades': self.grades,
+            'Hobbies': self.hobbies
+        })
+
+    def display_profile(self):
+        for info in self.profile_info:
+            print(f"Name: {info['Name']}, MBTI: {info['MBTI']}, Major: {info['Major']}, "
+                  f"Grades: {info['Grades']}, Hobbies: {info['Hobbies']}")
+
+
+# In[7]:
+
+
+import csv
+
+class MBTICareerMatch:
+    def __init__(self, csv_file):
+        self.mbti_careers = self.load_mbti_careers(csv_file)
+
+    def load_mbti_careers(self, csv_file):
+        mbti_careers = {}
+        with open(csv_file, newline='', encoding='utf-8') as csvfile:
+            reader = csv.reader(csvfile)
+            mbti_types = next(reader)  
+            for row in reader:
+                for i, mbti in enumerate(mbti_types):
+                    if mbti not in mbti_careers:
+                        mbti_careers[mbti] = []
+                    if i < len(row):
+                        mbti_careers[mbti].append(row[i])
+        return mbti_careers
+
+    def get_careers_for_mbti(self, mbti):
+        """根据MBTI类型获取适合的职业列表。"""
+        return self.mbti_careers.get(mbti, [])
+
+
+# In[8]:
+
+
+# 加载MBTI职业匹配信息
+mbti_matcher = MBTICareerMatch(r"C:\Users\25794\Desktop\MBTI Job Advise.csv")
+
+
+# 检查几个MBTI类型的职业信息
+test_mbti_types = ["ENTJ-A", "ISFP-T", "ENFP-A"]  # 仅示例，根据您的CSV文件中的实际类型调整
+
+for mbti_type in test_mbti_types:
+    careers = mbti_matcher.get_careers_for_mbti(mbti_type)
+    print(f"Jobs for {mbti_type}: {careers}")
+
+
+# In[13]:
+
+
+# 假设MBTICareerMatch类已经被正确定义和实现
+from ipywidgets import widgets, Layout, VBox, Label
+from IPython.display import display, clear_output
+
+
+# 初始化MBTI职业匹配实例（确保已经加载了职业数据）
+mbti_matcher = MBTICareerMatch(r"C:\Users\25794\Desktop\MBTI Job Advise.csv")
+
+
+class InteractiveCustomerProfile:
+    def __init__(self):
+        self.profiles = []
+        self.profile_info = {}
+        self.inputs = [
+            ('name', 'Your name: '),
+            ('mbti', 'Your MBTI（Including A/T）: '),
+            ('major', 'Your major: '),
+            ('grades', 'Your current grades: '),
+            ('hobbies', 'Your hobbies (comma separated): ')
+        ]
+        self.current_input_index = 0
+        # 在这里实现MBTICareerMatch类的功能
+        self.mbti_career_matcher = mbti_career_matcher
+
+    def start(self):
+        self.profile_info = {}  # 每次开始新的输入时重置信息
+        self.current_input_index = 0
+        self.ask_next_question()
+
+    def ask_next_question(self):
+        if self.current_input_index < len(self.inputs):
+            key, question = self.inputs[self.current_input_index]
+            label = Label(question)
+            input_box = widgets.Text()
+            box = VBox([label, input_box])
+            display(box)
+            input_box.observe(self.handle_submit)
+        else:
+            self.profiles.append(self.profile_info)  # 收集完所有信息后存储到profiles列表中
+            self.display_profile()
+
+    def handle_submit(self, input_box):
+        key, _ = self.inputs[self.current_input_index]
+        self.profile_info[key] = input_box.value
+        clear_output()
+        self.current_input_index += 1
+        self.ask_next_question()
+
+
+    def display_profile(self):
+        # 显示最新输入的客户信息
+        print("Profile Information:")
+        for key, (_, question) in zip(self.profile_info.keys(), self.inputs):
+            value = self.profile_info.get(key, '')
+            print(f"{question} {value if key != 'hobbies' else ', '.join(value.split(','))}")
+        print("-----")
+        # 在显示客户信息后显示职业建议
+        self.display_career_advice()
+
+    def display_career_advice(self):
+        # 根据用户的MBTI显示职业建议
+        mbti_type = self.profile_info.get('mbti', '')
+        if mbti_type:
+            careers = self.mbti_career_matcher.get_careers_for_mbti(mbti_type)
+            print(f"Career Advice for {mbti_type}: {', '.join(careers)}")
+        else:
+            print("No MBTI type provided, cannot offer career advice.")
+
+# 创建一个交互式客户档案对象并启动它
+interactive_profile = InteractiveCustomerProfile()
+interactive_profile.start()
+
+
+# In[12]:
+
+
+import openai
+
+class InteractiveCustomerProfile:
+    def __init__(self):
+        self.profiles = []  # 存储所有客户的信息
+        self.profile_info = {}
+        self.inputs = [
+            ('name', 'Your name: '),
+            ('mbti', 'Your MBTI（Including A/T）: '),
+            ('major', 'Your major: '),
+            ('grades', 'Your current grades: '),
+            ('hobbies', 'Your hobbies (comma separated): ')
+        ]
+        self.current_input_index = 0
+
+    def start(self):
+        self.profile_info = {}  # 每次开始新的输入时重置信息
+        self.current_input_index = 0
+        self.ask_next_question()
+
+    def ask_next_question(self):
+        if self.current_input_index < len(self.inputs):
+            key, question = self.inputs[self.current_input_index]
+            label = Label(question)
+            input_box = widgets.Text()
+            box = VBox([label, input_box])
+            display(box)
+            input_box.on_submit(self.handle_submit)
+        else:
+            self.profiles.append(self.profile_info.copy())  # 收集完所有信息后存储到profiles列表中
+            self.display_profile()
+            self.generate_career_advice()  # 生成职业建议
+
+    def handle_submit(self, input_box):
+        key, _ = self.inputs[self.current_input_index]
+        self.profile_info[key] = input_box.value
+        clear_output()
+        self.current_input_index += 1
+        self.ask_next_question()
+
+    def display_profile(self):
+        # 显示最新输入的客户信息
+        print("Profile Information:")
+        for key, (_, question) in zip(self.profile_info.keys(), self.inputs):
+            value = self.profile_info.get(key, '')
+            print(f"{question} {value if key != 'hobbies' else ', '.join(value.split(','))}")
+        print("-----")
+
+    def get_all_profiles(self):
+        # 获取存储的所有客户信息
+        return self.profiles
+
+
+    def generate_career_report(self):
+        # 确保用户信息已经输入
+        if not self.profile_info:
+            print("No profile information available.")
+            return
+        
+        # 构造用于生成职业发展报告的prompt
+        mbti_type = self.profile_info.get('mbti', '')
+        name = self.profile_info.get('name', 'the person')
+        major = self.profile_info.get('major', '')
+        grades = self.profile_info.get('grades', '')
+        hobbies = self.profile_info.get('hobbies', '').replace(',', ', ')
+        
+        careers = self.mbti_career_matcher.get_careers_for_mbti(mbti_type)
+        career_advice = ", ".join(careers)
+        
+        prompt = (f"Based on the profile information of {name}, whose MBTI type is {mbti_type}, major in {major}, "
+                  f"current grades are {grades}, and hobbies include {hobbies}, provide a detailed and personalized "
+                  f"career development analysis. Consider the following career advice: {career_advice}.")
+        
+        # 使用OpenAI API生成职业发展报告
+        try:
+            openai.api_key = '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'
+            response = openai.Completion.create(
+                engine="text-davinci-003",
+                prompt=prompt,
+                temperature=0.7,
+                max_tokens=1000,
+                top_p=1.0,
+                frequency_penalty=0.0,
+                presence_penalty=0.0
+            )
+            report = response.choices[0].text.strip()
+            print("Career Development Report:")
+            print(report)
+        except Exception as e:
+            print(f"An error occurred while generating the career development report: {e}")
+
+# 示例代码，假设interactive_profile实例已经被正确初始化和填充了用户信息
+# interactive_profile.generate_career_report()
+
+
+# In[ ]:
+
+
+
+
+
+    return '这是根据你输入的信息生成的分析报告：' + info;
+}
+
+    </script>
+</body>
+</html>
